@@ -9,7 +9,6 @@ alias get='git'
 alias gst='git status'
 alias gs='git status'
 alias gss='git status -s'
-alias gl='git pull'
 alias gup='git fetch && git rebase'
 alias gp='git push'
 alias gpo='git push origin'
@@ -25,21 +24,8 @@ alias gco='git checkout'
 alias gexport='git archive --format zip --output'
 alias gdel='git branch -D'
 alias gmu='git fetch origin -v; git fetch upstream -v; git merge upstream/master'
-alias gll='git log --graph --pretty=oneline --abbrev-commit'
-
-case $OSTYPE in
-  linux*)
-    alias gd='git diff | vim -R -'
-    ;;
-  darwin*)
-    alias gd='git diff | mate'
-    ;;
-  darwin*)
-    alias gd='git diff'
-    ;;
-esac
-
-
+alias gd='git diff'
+alias gl="git log --graph --pretty=format:'%Creset%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative"
 
 function git-help() {
   echo "Git Custom Aliases Usage"
@@ -51,10 +37,10 @@ function git-help() {
   echo "  gall	  = git add ."
   echo "  gst/gs  = git status"
   echo "  gss	  = git status -s"
-  echo "  gl      = git pull"
+  echo "  gl      = git log"
   echo "  gup     = git fetch && git rebase"
   echo "  gp      = git push"
-  echo "  gd      = git diff | mate"
+  echo "  gd      = git diff"
   echo "  gdv     = git diff -w \"$@\" | vim -R -"
   echo "  gc      = git commit -v"
   echo "  gca     = git commit -v -a"
@@ -68,6 +54,5 @@ function git-help() {
   echo "  gdel    = git branch -D"
   echo "  gpo     = git push origin"
   echo "  gmu     = git fetch origin -v; git fetch upstream -v; git merge upstream/master"
-  echo "  gll     = git log --graph --pretty=oneline --abbrev-commit"
   echo
 }
